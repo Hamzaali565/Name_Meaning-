@@ -3,19 +3,21 @@ import volume from "../Assets/volume.png";
 import copy from "../Assets/copy.png";
 import copied from "../Assets/copied.png";
 import stop from "../Assets/mute.png";
-const Container = () => {
+const Container = ({ text, head }) => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
   const textRef = useRef(null);
   const speechRef = useRef(null);
-  const handleSpeak = () => {
+  const handleSpeak = async () => {
     if (isSpeaking) {
       window.speechSynthesis.cancel();
+      console.log("cancel");
     } else {
-      const text = textRef.current.innerText;
+      const text = await textRef.current.innerText;
       const speech = new SpeechSynthesisUtterance(text);
       speech.rate = 1; // You can adjust the speech rate
       window.speechSynthesis.speak(speech);
+      console.log("cancelsss");
     }
     setIsSpeaking(!isSpeaking);
   };
@@ -25,20 +27,17 @@ const Container = () => {
     navigator.clipboard.writeText(text).then(() => {
       //   alert("Text copied to clipboard!");
       setIsCopied(true);
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 5000);
     });
   };
   return (
     <div className="flex justify-center">
-      <div className="w-72 flex flex-col sm:w-96">
-        <h1 className="text-5xl font-bold">Hamza</h1>
-        <p className="text-justify" ref={textRef}>
-          Hamza (also spelled as Hamzah, Hamsah, Hamzeh or Humza; Arabic:
-          حَمْزَة, standardized transliteration is Ḥamzah) is an Arabic
-          masculine given name in the Muslim world. It means lion, strong, and
-          steadfast. It was borne by one of the Islamic prophet Muhammad's
-          uncles, Hamza ibn Abd al-Muttalib, a wrestler and an archer who was
-          renowned for his strength and bravery in battle. His exploits were
-          detailed in the Hamzanama, an adventure epic written in Persian.
+      <div className="w-72 flex flex-col sm:w-96 lg:w-120 p-4 rounded-lg  border border-gray-300 shadow-pink">
+        <h1 className="text-5xl font-bold">{head}</h1>
+        <p className="text-justify my-3" ref={textRef}>
+          {text}
         </p>
         <div className="flex justify-end space-x-2">
           <button onClick={handleSpeak}>
@@ -52,7 +51,7 @@ const Container = () => {
             {isCopied == false ? (
               <img className="h-6" src={copy} alt="" />
             ) : (
-              <img className="h-6 " src={copied} />
+              <img className="h-6" src={copied} alt="" />
             )}
           </button>
         </div>

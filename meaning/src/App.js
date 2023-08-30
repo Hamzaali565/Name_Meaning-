@@ -5,14 +5,17 @@ import GoogleSearchComponent from "./components/GoogleSearchComponents";
 import Search from "./components/Search/Search";
 import Container from "./components/Container/Container";
 import TextManipulation from "./components/TextManipulation";
+import HomePage from "./screen/HomePage/HomePage";
 
 function App() {
   return (
     <div className="">
       {/* <GoogleSearchComponent /> */}
       {/* <Search /> */}
-      <Container />
+      {/* <Container /> */}
       {/* <TextManipulation /> */}
+      <HomePage />
+      {/* <NameAPIComponent /> */}
     </div>
   );
 }

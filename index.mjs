@@ -13,18 +13,18 @@ const port = process.env.PORT || 3001;
 
 app.use(express.json());
 
-// app.use(
-//   cors({
-//     origin: ["http://localhost:3000", "*"],
-//     credentials: true,
-//   })
-// );
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "*"],
+    credentials: true,
+  })
+);
 
 app.get("/scrape", async (req, res) => {
+  console.log(req.query.link);
+  let link = req.query.link;
   try {
-    const response = await axios.get(
-      "https://en.wikipedia.org/wiki/Hamza_(name)"
-    );
+    const response = await axios.get(`${link}`);
     const html = response.data;
     const $ = cheerio.load(html);
 
@@ -40,8 +40,8 @@ app.get("/scrape", async (req, res) => {
 ///..........
 // Static hosting
 const __dirname = path.resolve();
-app.use("/", express.static(path.join(__dirname, "./Frontend/build")));
-app.use("*", express.static(path.join(__dirname, "./Frontend/build")));
+app.use("/", express.static(path.join(__dirname, "./meaning/build")));
+app.use("*", express.static(path.join(__dirname, "./meaning/build")));
 
 // Start the server
 app.listen(port, () => {

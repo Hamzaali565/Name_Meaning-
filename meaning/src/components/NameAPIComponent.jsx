@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { GoogleSearchComponent } from "./GoogleSearchComponents";
 
 const NameAPIComponent = () => {
   const [name, setName] = useState("");
@@ -7,16 +8,11 @@ const NameAPIComponent = () => {
 
   const fetchNameMeaning = async () => {
     try {
-      // mu650687572
-      const apiKey = "mu650687572"; // Replace with your actual API key
-      const response = await axios.get(
-        ` https://www.behindthename.com/api/lookup.json?name=${name}&key=${apiKey}`
-      );
-      const nameData = response.data;
-      //   setMeaning(nameData.meanings.join(", "));
-      console.log(nameData);
-    } catch (error) {
-      console.error("Error fetching name meaning:", error);
+      let response = await GoogleSearchComponent(name);
+      let split = response[0].link.split(".")[1];
+      console.log("response", split);
+    } catch (e) {
+      console.log(e);
     }
   };
 
