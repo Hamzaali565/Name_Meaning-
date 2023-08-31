@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+.NewMergeContainer > div {
+  position: relative;
+  z-index: 1;
+  overflow-x: hidden;
+}
+.NewMergeContainer {
+  overflow-x: hidden;
+  overflow: hidden;
+}
+.NewMergeContainer:after {
+  content: "";
+  width: 15em;
+  height: 15em;
+  position: absolute;
+  top: 25em;
+  right: 2em;
+  background: url("./components/Assets/database-table.gif");
+  display: inline-block;
+  background-size: cover;
+  z-index: 0;
+}

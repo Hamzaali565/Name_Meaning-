@@ -44,26 +44,28 @@ const HomePage = () => {
   };
 
   return (
-    <div>
-      <h1 className="flex justify-center my-10 text-6xl font-bold">
-        Name Definer
-      </h1>
-      <div className="my-5">
-        <Search
-          onChange={(e) => {
-            setName(e.target.value);
-            // onsubmit = { getData };
-          }}
-          onclick={fetchNameMeaning}
-          //   onkeypress={fetchNameMeaning}
-          onSubmit={fetchNameMeaning}
-        />
-      </div>
-      {text !== "" ? (
-        <div>
-          <Container text={text} />
+    <div className="NewMergeContainer">
+      <div className="">
+        {/* <h1 className="flex justify-center my-10 text-6xl font-bold">
+          Name Definer
+        </h1> */}
+        <div className="my-5">
+          <Search
+            onChange={(e) => {
+              setName(e.target.value);
+              // onsubmit = { getData };
+            }}
+            onclick={fetchNameMeaning}
+            //   onkeypress={fetchNameMeaning}
+            onSubmit={fetchNameMeaning}
+          />
         </div>
-      ) : null}
+        {text !== "" ? (
+          <div>
+            <Container text={text} />
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 };

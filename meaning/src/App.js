@@ -6,6 +6,8 @@ import Search from "./components/Search/Search";
 import Container from "./components/Container/Container";
 import TextManipulation from "./components/TextManipulation";
 import HomePage from "./screen/HomePage/HomePage";
+import Header from "./screen/Header/Header";
+import Sidebaar from "./components/Sidebaar/Sidebaar";
 
 function App() {
   return (
@@ -14,7 +16,9 @@ function App() {
       {/* <Search /> */}
       {/* <Container /> */}
       {/* <TextManipulation /> */}
-      <HomePage />
+      {/* <Header /> */}
+      {/* <HomePage /> */}
+      <Sidebaar />
       {/* <NameAPIComponent /> */}
     </div>
   );
