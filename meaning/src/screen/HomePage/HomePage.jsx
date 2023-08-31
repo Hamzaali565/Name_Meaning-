@@ -44,7 +44,7 @@ const HomePage = () => {
   };
 
   return (
-    <div className="NewMergeContainer">
+    <div className="">
       <div className="">
         {/* <h1 className="flex justify-center my-10 text-6xl font-bold">
           Name Definer

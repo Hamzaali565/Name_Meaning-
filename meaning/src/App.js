@@ -8,6 +8,7 @@ import TextManipulation from "./components/TextManipulation";
 import HomePage from "./screen/HomePage/HomePage";
 import Header from "./screen/Header/Header";
 import Sidebaar from "./components/Sidebaar/Sidebaar";
+import PageI from "./screen/Main1/PageI";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
       {/* <TextManipulation /> */}
       {/* <Header /> */}
       {/* <HomePage /> */}
-      <Sidebaar />
+      {/* <Sidebaar /> */}
+      <PageI />
       {/* <NameAPIComponent /> */}
     </div>
   );
