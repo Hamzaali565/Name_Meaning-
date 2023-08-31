@@ -7,7 +7,7 @@ const Sidebaar = () => {
     <div className="border-r-8 m-0 border-pink-500 h-screen">
       <div>
         <SidebarData text={"Boys Name~"} src={boy} />
-        <SidebarData text={"Girls Name"} src={girl} />
+        <SidebarData text={"Girls Name~"} src={girl} />
       </div>
     </div>
   );
