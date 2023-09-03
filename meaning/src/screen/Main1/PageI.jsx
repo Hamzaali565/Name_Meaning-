@@ -7,15 +7,15 @@ const PageI = () => {
   return (
     <div>
       <div className="">
-        <div className="fixed top-0 w-full z-10 bg-white">
+        <div className="">
           <Header />
         </div>
 
-        <div className="flex pt-16 NewMergeContainer">
-          <div className="hidden lg:block">
+        <div className="flex NewMergeContainer">
+          <div className="hidden w-1/4 h-screen overflow-y-auto lg:block">
             <Sidebaar />
           </div>
-          <div className="flex-grow">
+          <div className="w-3/4 h-screen overflow-y-auto">
             <HomePage />
           </div>
         </div>
