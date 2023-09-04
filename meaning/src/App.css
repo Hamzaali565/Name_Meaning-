@@ -57,3 +57,13 @@
   background-size: cover;
   z-index: 0;
 }
+.adiv {
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  /* height: 400px; */
+  height: 500px;
+}
+.adiv::-webkit-scrollbar {
+  display: none;
+}

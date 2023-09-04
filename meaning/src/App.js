@@ -9,18 +9,21 @@ import HomePage from "./screen/HomePage/HomePage";
 import Header from "./screen/Header/Header";
 import Sidebaar from "./components/Sidebaar/Sidebaar";
 import PageI from "./screen/Main1/PageI";
+import Loader from "./components/Animation/Loader";
+import Container2 from "./components/Container/Container2";
 
 function App() {
   return (
     <div className="">
       {/* <GoogleSearchComponent /> */}
       {/* <Search /> */}
-      {/* <Container /> */}
+      {/* <Container2 /> */}
       {/* <TextManipulation /> */}
       {/* <Header /> */}
       {/* <HomePage /> */}
       {/* <Sidebaar /> */}
       <PageI />
+      {/* <Loader /> */}
       {/* <NameAPIComponent /> */}
     </div>
   );

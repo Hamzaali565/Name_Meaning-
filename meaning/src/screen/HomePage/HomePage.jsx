@@ -3,48 +3,64 @@ import Search from "../../components/Search/Search";
 import Container from "../../components/Container/Container";
 import axios from "axios";
 import { GoogleSearchComponent } from "../../components/GoogleSearchComponents";
+import Loader from "../../components/Animation/Loader";
+import Container2 from "../../components/Container/Container2";
 
 {
 }
 const HomePage = () => {
   const [name, setName] = useState("");
   const [text, setText] = useState("");
+  const [moreDetail, setMoreDetails] = useState([]);
+  const [loader, setLoader] = useState(false);
   let baseUrl = "";
   if (window.location.href.split(":")[0] === "http") {
     baseUrl = "http://localhost:3001";
   }
-  const getData = async (link) => {
+  const getData = async (link, data) => {
     console.log("link", link);
     try {
       let response = await axios.get(`${baseUrl}/scrape?link=${link}
       `);
       console.log(response);
       setText(response.data.meaning);
+      console.log("data", data);
+      setMoreDetails(data);
+      setLoader(false);
     } catch (error) {
       console.log(error);
+      console.log("data", data);
     }
   };
 
   const fetchNameMeaning = async (e) => {
     e.preventDefault();
+    setLoader(true);
     try {
+      setMoreDetails(null);
+      setText("");
       let response = await GoogleSearchComponent(name);
+      console.log("res", response);
+      let data = await response.splice(1, 3);
+
       let link = response[0].link;
-      //   console.log(link);
       let split = link.split(".")[1];
       if (split == "wikipedia") {
-        let dates = await getData(link);
+        let dates = await getData(link, data);
       } else {
-        console.log("something else");
+        await getData(link, data);
       }
       console.log("response", split);
     } catch (e) {
       console.log(e);
     }
   };
+  const GotoWeb = (item) => {
+    window.open(item.link);
+  };
 
   return (
-    <div className="">
+    <div className="overflow-hidden adiv">
       <div className="">
         {/* <h1 className="flex justify-center my-10 text-6xl font-bold">
           Name Definer
@@ -60,11 +76,34 @@ const HomePage = () => {
             onSubmit={fetchNameMeaning}
           />
         </div>
-        {text !== "" ? (
-          <div>
-            <Container text={text} />
-          </div>
-        ) : null}
+        <div>
+          {loader == true ? (
+            <Loader />
+          ) : (
+            <dir>
+              {text !== "" ? (
+                <div>
+                  <Container text={text} />
+                </div>
+              ) : null}
+              <div>
+                <h3 className="text-3xl font-bold text-pink-500 text-center pt-5">
+                  {text.length == "" ? null : "More Results"}
+                </h3>
+                {moreDetail &&
+                  moreDetail.map((eachitem, i) => (
+                    <Container2
+                      text={eachitem.snippet}
+                      onClick={() => {
+                        GotoWeb(eachitem);
+                      }}
+                    />
+                  ))}
+                {/* <Container2 /> */}
+              </div>
+            </dir>
+          )}
+        </div>
       </div>
     </div>
   );

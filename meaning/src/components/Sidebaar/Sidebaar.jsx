@@ -6,7 +6,7 @@ const Sidebaar = () => {
   return (
     <div
       className="border-r-8 border-pink-500 h-screen"
-      style={{ overflow: "auto" }}
+      // style={{ overflow: "auto" }}
     >
       <div className="flex flex-col items-center">
         <SidebarData text={"Boys Name~"} src={boy} />

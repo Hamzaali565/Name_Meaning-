@@ -15,7 +15,7 @@ const PageI = () => {
           <div className="hidden w-1/4 h-screen overflow-y-auto lg:block">
             <Sidebaar />
           </div>
-          <div className="w-3/4 h-screen overflow-y-auto">
+          <div className="h-screen  lg:w-3/4 ">
             <HomePage />
           </div>
         </div>
