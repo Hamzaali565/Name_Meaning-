@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../components/Assets/Name.png";
+// import logo from "../../components/Assets/Name.png";
 const Header = () => {
   return (
     <div className="bg-pink-400 p-2 items-center">

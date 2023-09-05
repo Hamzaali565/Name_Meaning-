@@ -11,6 +11,7 @@ import Sidebaar from "./components/Sidebaar/Sidebaar";
 import PageI from "./screen/Main1/PageI";
 import Loader from "./components/Animation/Loader";
 import Container2 from "./components/Container/Container2";
+import Error from "./components/Error/Error";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       {/* <Header /> */}
       {/* <HomePage /> */}
       {/* <Sidebaar /> */}
+      {/* <Error /> */}
       <PageI />
       {/* <Loader /> */}
       {/* <NameAPIComponent /> */}
