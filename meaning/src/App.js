@@ -17,8 +17,8 @@ import Boys from "./screen/Names/Boys";
 function App() {
   return (
     <div className="">
-      {/* <PageI /> */}
-      <Boys />
+      <PageI />
+      {/* <Boys /> */}
     </div>
   );
 }
