@@ -12,21 +12,13 @@ import PageI from "./screen/Main1/PageI";
 import Loader from "./components/Animation/Loader";
 import Container2 from "./components/Container/Container2";
 import Error from "./components/Error/Error";
+import Boys from "./screen/Names/Boys";
 
 function App() {
   return (
     <div className="">
-      {/* <GoogleSearchComponent /> */}
-      {/* <Search /> */}
-      {/* <Container2 /> */}
-      {/* <TextManipulation /> */}
-      {/* <Header /> */}
-      {/* <HomePage /> */}
-      {/* <Sidebaar /> */}
-      {/* <Error /> */}
-      <PageI />
-      {/* <Loader /> */}
-      {/* <NameAPIComponent /> */}
+      {/* <PageI /> */}
+      <Boys />
     </div>
   );
 }
