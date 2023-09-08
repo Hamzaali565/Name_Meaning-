@@ -6,9 +6,8 @@ import { GoogleSearchComponent } from "../../components/GoogleSearchComponents";
 import Loader from "../../components/Animation/Loader";
 import Container2 from "../../components/Container/Container2";
 import Error from "../../components/Error/Error";
+import animationData from "../../components/Animation/datad.json";
 
-{
-}
 const HomePage = () => {
   const [name, setName] = useState("");
   const [text, setText] = useState("");
@@ -51,7 +50,7 @@ const HomePage = () => {
       link = response[0].link;
 
       let split = link.split(".")[1];
-      if (split == "wikipedia") {
+      if (split === "wikipedia") {
         let dates = await getData(link, data);
       } else {
         await getData(link, data);
@@ -84,8 +83,8 @@ const HomePage = () => {
           />
         </div>
         <div>
-          {loader == true ? (
-            <Loader />
+          {loader === true ? (
+            <Loader AniData={animationData} height={"200px"} />
           ) : (
             <dir>
               {text !== "" ? (
@@ -95,7 +94,7 @@ const HomePage = () => {
               ) : null}
               <div>
                 <h3 className="text-3xl font-bold text-pink-500 text-center pt-5">
-                  {text.length == "" ? null : "More Results"}
+                  {text.length === "" ? null : "More Results"}
                 </h3>
                 {moreDetail &&
                   moreDetail.map((eachitem, i) => (

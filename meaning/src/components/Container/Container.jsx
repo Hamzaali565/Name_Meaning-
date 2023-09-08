@@ -7,7 +7,6 @@ const Container = ({ text, head }) => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
   const textRef = useRef(null);
-  const speechRef = useRef(null);
   const handleSpeak = async () => {
     if (isSpeaking) {
       window.speechSynthesis.cancel();
@@ -48,7 +47,7 @@ const Container = ({ text, head }) => {
             )}
           </button>
           <button className="h-6" onClick={handleCopy}>
-            {isCopied == false ? (
+            {isCopied === false ? (
               <img className="h-6" src={copy} alt="" />
             ) : (
               <img className="h-6" src={copied} alt="" />

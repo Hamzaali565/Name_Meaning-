@@ -1,17 +1,16 @@
 import React from "react";
 import Lottie from "react-lottie";
-import animationData from "./datad.json";
-const Loader = () => {
+const Loader = ({ AniData, height }) => {
   const defaultOptions = {
     loop: true,
     autoplay: true,
-    animationData: animationData, // This is the imported animation data
+    animationData: AniData, // This is the imported animation data
   };
   return (
     <div>
       <Lottie
         options={defaultOptions}
-        style={{ height: "200px", textSizeAdjust: "revert" }}
+        style={{ height: `${height}`, textSizeAdjust: "revert" }}
       />
     </div>
   );

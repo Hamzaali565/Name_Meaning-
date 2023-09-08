@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../Header/Header";
 import Sidebaar from "../../components/Sidebaar/Sidebaar";
-import BoysName from "../../components/GenderWise/BoysName";
+import GirlsName from "../../components/GenderWise/Girls";
 
 const Boys = () => {
   return (
@@ -14,7 +14,7 @@ const Boys = () => {
           <Sidebaar />
         </div>
         <div className="flex-1">
-          <BoysName />
+          <GirlsName />
         </div>
       </div>
     </div>
