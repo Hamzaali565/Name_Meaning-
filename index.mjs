@@ -1,10 +1,11 @@
 import express from "express";
 import cors from "cors";
 import path from "path";
-import mongoose from "mongoose";
+import mongoose, { Error } from "mongoose";
 import axios from "axios";
 import cheerio from "cheerio";
 import * as dotenv from "dotenv";
+import { error } from "console";
 
 dotenv.config();
 mongoose.set("strictQuery", false);
@@ -19,6 +20,15 @@ app.use(
     credentials: true,
   })
 );
+const nameWise = new mongoose.Schema({
+  name: { type: String, required: true },
+  category: { type: String, required: true },
+  religion: { type: String, default: false },
+  gender: { type: String, required: true },
+  meaning: { type: String, required: true },
+  createdOn: { type: Date, default: Date.now },
+});
+export const nameWiseModel = mongoose.model("nameWise", nameWise);
 
 app.get("/scrape", async (req, res) => {
   console.log(req.query.link);
@@ -37,6 +47,51 @@ app.get("/scrape", async (req, res) => {
   }
 });
 
+app.post("/api/v1/nameWise", async (req, res) => {
+  try {
+    let body = req.body;
+    const { name, category, religion, meaning, gender } = body;
+    if (![name, meaning, religion, category, gender].every(Boolean))
+      throw new Error("All Parameters Are Required");
+    let saveResponse = await nameWiseModel.create({
+      category,
+      name,
+      religion,
+      meaning,
+      gender,
+    });
+    res.status(200).send({ message: `Data Inserted Successfully` });
+    console.log(saveResponse);
+  } catch (error) {
+    res.status(404).send({ message: `${error.message}` });
+  }
+});
+
+app.get("/api/v1/getallNames", async (req, res) => {
+  const { category } = req.body;
+  try {
+    if (!category) throw new Error("Category is required");
+    let response = await nameWiseModel.find({ category }).exec();
+    console.log(response);
+    if (response.length < 1) throw new Error("Data Not Found");
+    res.status(200).send({ data: response });
+  } catch (err) {
+    res.status(404).send({ message: `${err.message}` });
+  }
+});
+app.get("/api/v1/genderWiseNames", async (req, res) => {
+  const { category, gender } = req.body;
+  try {
+    if (![category, gender].every(Boolean))
+      throw new Error("Parameter of Category and Gender is required");
+    let response = await nameWiseModel.find({ category, gender }).exec();
+    console.log(response);
+    if (response.length < 1) throw new Error("Data Not Found");
+    res.status(200).send({ data: response });
+  } catch (err) {
+    res.status(404).send({ message: `${err.message}` });
+  }
+});
 ///..........
 // Static hosting
 const __dirname = path.resolve();
@@ -75,12 +130,11 @@ mongoose.connection.on("error", function (err) {
 });
 
 process.on("SIGINT", function () {
-  /////this function will run jst before app is closing
+  /////this function will run just before the app is closing
   console.log("app is terminating");
-  mongoose.connection.close(function () {
-    console.log("Mongoose default connection closed");
-    process.exit(0);
-  });
+  mongoose.connection.close(); // Remove the callback function here
+  console.log("Mongoose default connection closed");
+  process.exit(0);
 });
 ////////////////mongodb connected disconnected events///////////////////////////////////////////////
 
