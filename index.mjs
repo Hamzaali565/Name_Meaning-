@@ -23,7 +23,6 @@ app.use(
 const nameWise = new mongoose.Schema({
   name: { type: String, required: true },
   category: { type: String, required: true },
-  religion: { type: String, default: false },
   gender: { type: String, required: true },
   meaning: { type: String, required: true },
   createdOn: { type: Date, default: Date.now },
@@ -50,13 +49,12 @@ app.get("/scrape", async (req, res) => {
 app.post("/api/v1/nameWise", async (req, res) => {
   try {
     let body = req.body;
-    const { name, category, religion, meaning, gender } = body;
-    if (![name, meaning, religion, category, gender].every(Boolean))
+    const { name, category, meaning, gender } = body;
+    if (![name, meaning, category, gender].every(Boolean))
       throw new Error("All Parameters Are Required");
     let saveResponse = await nameWiseModel.create({
       category,
       name,
-      religion,
       meaning,
       gender,
     });
