@@ -2,9 +2,15 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Loader from "../../components/Animation/Loader";
 import dotLoader from "../../components/Animation/data3.json";
+import Button from "../Button/Button";
+
 const BoysName = () => {
   const [BoysName, setBoysName] = useState([]);
   const [loader, setLoader] = useState(false);
+  let baseUrl = "";
+  if (window.location.href.split(":")[0] === "http") {
+    baseUrl = "http://localhost:3001";
+  }
   useEffect(() => {
     CallNaw();
   }, []);
@@ -31,6 +37,20 @@ const BoysName = () => {
       setLoader(false);
     }
   };
+
+  const NameCall = async (text) => {
+    console.log(baseUrl);
+
+    try {
+      const response = await axios.get(
+        `${baseUrl}/api/v1/genderWiseNames?category=${text}&gender=${"Male"}`
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const ScrollToDiv3 = async () => {
     const targetDiv = document.getElementById("scrollButton");
     await targetDiv.scrollIntoView({ behavior: "smooth" });
@@ -39,6 +59,26 @@ const BoysName = () => {
 
   return (
     <div>
+      <div className="flex justify-center mt-3 space-x-3">
+        <Button
+          text={"Muslim"}
+          onClick={() => {
+            NameCall("Muslim");
+          }}
+        />
+        <Button
+          text={"Hindu"}
+          onClick={() => {
+            NameCall("Hindu");
+          }}
+        />
+        <Button
+          text={"Christian"}
+          onClick={() => {
+            NameCall("Christian");
+          }}
+        />
+      </div>
       <div className="flex justify-center">
         <table bgcolor="black" style={{ marginTop: "20px" }}>
           <tr className="bg-pink-300">

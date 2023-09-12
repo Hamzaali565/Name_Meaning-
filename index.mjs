@@ -78,7 +78,8 @@ app.get("/api/v1/getallNames", async (req, res) => {
   }
 });
 app.get("/api/v1/genderWiseNames", async (req, res) => {
-  const { category, gender } = req.body;
+  console.log("body", req.query);
+  const { category, gender } = req.query;
   try {
     if (![category, gender].every(Boolean))
       throw new Error("Parameter of Category and Gender is required");

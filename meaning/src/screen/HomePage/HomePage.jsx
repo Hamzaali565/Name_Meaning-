@@ -94,7 +94,7 @@ const HomePage = () => {
               ) : null}
               <div>
                 <h3 className="text-3xl font-bold text-pink-500 text-center pt-5">
-                  {text.length === "" ? null : "More Results"}
+                  {text.length == "" ? null : "More Results"}
                 </h3>
                 {moreDetail &&
                   moreDetail.map((eachitem, i) => (
