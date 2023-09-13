@@ -66,10 +66,21 @@ app.post("/api/v1/nameWise", async (req, res) => {
 });
 
 app.get("/api/v1/getallNames", async (req, res) => {
-  const { category } = req.body;
+  const { gender, page } = req.query;
+  console.log(page);
   try {
-    if (!category) throw new Error("Category is required");
-    let response = await nameWiseModel.find({ category }).exec();
+    if (!gender) throw new Error("Category is required");
+    let response = await nameWiseModel
+      .find(
+        { gender },
+        {},
+        {
+          // sort: { _id: -1 },
+          skip: page,
+          limit: 1,
+        }
+      )
+      .exec();
     console.log(response);
     if (response.length < 1) throw new Error("Data Not Found");
     res.status(200).send({ data: response });

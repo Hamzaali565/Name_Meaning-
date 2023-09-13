@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Search from "../../components/Search/Search";
 import Container from "../../components/Container/Container";
 import axios from "axios";
@@ -37,6 +37,7 @@ const HomePage = () => {
     }
   };
   console.log(errorMessage);
+
   const fetchNameMeaning = async (e) => {
     e.preventDefault();
     setLoader(true);
@@ -61,6 +62,7 @@ const HomePage = () => {
       getData(link);
     }
   };
+
   const GotoWeb = (item) => {
     window.open(item.link);
   };
