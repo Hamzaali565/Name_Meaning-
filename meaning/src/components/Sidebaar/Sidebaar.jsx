@@ -22,7 +22,7 @@ const Sidebaar = () => {
   };
   return (
     <div
-      className="border-r-8 border-pink-500 h-full"
+      className="border-r-8 border-pink-500 h-auto p-1"
       // style={{ overflow: "auto" }}
     >
       <div className="flex flex-col items-center">

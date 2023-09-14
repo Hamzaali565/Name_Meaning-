@@ -10,10 +10,10 @@ const Boys = () => {
         <Header />
       </div>
       <div className="flex">
-        <div>
+        <div className="hidden lg:flex">
           <Sidebaar />
         </div>
-        <div className="flex-1">
+        <div className="flex-1 m-1 lg:m-0">
           <GirlsName />
         </div>
       </div>

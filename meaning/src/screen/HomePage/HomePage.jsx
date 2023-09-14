@@ -68,7 +68,7 @@ const HomePage = () => {
   };
 
   return (
-    <div className="overflow-hidden adiv">
+    <div className="overflow-hidden adiv flex justify-center">
       <div className="">
         {/* <h1 className="flex justify-center my-10 text-6xl font-bold">
           Name Definer

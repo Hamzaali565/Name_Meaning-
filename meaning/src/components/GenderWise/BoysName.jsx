@@ -72,7 +72,9 @@ const BoysName = () => {
         `${baseUrl}/api/v1/getallNames?gender=Male&page=${BoysName.length}`
       );
       let data = response.data.data;
-      setBoysName((prev) => [...prev, ...data]);
+      // setBoysName((prev) => [...prev, ...data]);
+      setBoysName(data);
+
       console.log(data);
       setLoader(false);
     } catch (error) {

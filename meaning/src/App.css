@@ -59,10 +59,9 @@
 }
 .adiv {
   overflow-y: scroll;
-  -ms-overflow-style: none; /* IE and Edge */
+  -ms-overflow-style: none;
   scrollbar-width: none;
-  /* height: 400px; */
-  height: 500px;
+  height: 600px;
 }
 .adiv::-webkit-scrollbar {
   display: none;

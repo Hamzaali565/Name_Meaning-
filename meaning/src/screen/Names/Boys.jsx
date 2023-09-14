@@ -9,11 +9,11 @@ const Boys = () => {
       <div>
         <Header />
       </div>
-      <div className="flex">
-        <div>
+      <div className=" flex">
+        <div className="hidden lg:flex">
           <Sidebaar />
         </div>
-        <div className="flex-1">
+        <div className="flex-1 m-1 lg:m-0">
           <BoysName />
         </div>
       </div>
