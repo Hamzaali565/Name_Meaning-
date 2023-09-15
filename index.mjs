@@ -5,7 +5,7 @@ import mongoose, { Error } from "mongoose";
 import axios from "axios";
 import cheerio from "cheerio";
 import * as dotenv from "dotenv";
-import { error } from "console";
+import { error, log } from "console";
 
 dotenv.config();
 mongoose.set("strictQuery", false);
@@ -16,7 +16,12 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "*"],
+    origin: [
+      "http://localhost:3000",
+      "http://localhost:3002",
+      "https://name-api-admin.vercel.app",
+      "*",
+    ],
     credentials: true,
   })
 );
@@ -49,6 +54,7 @@ app.get("/scrape", async (req, res) => {
 app.post("/api/v1/nameWise", async (req, res) => {
   try {
     let body = req.body;
+    console.log(body);
     const { name, category, meaning, gender } = body;
     if (![name, meaning, category, gender].every(Boolean))
       throw new Error("All Parameters Are Required");
