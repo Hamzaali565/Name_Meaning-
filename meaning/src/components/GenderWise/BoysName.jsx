@@ -71,11 +71,11 @@ const BoysName = () => {
       let response = await axios.get(
         `${baseUrl}/api/v1/getallNames?gender=Male&page=${BoysName.length}`
       );
-      let data = response.data.data;
-      // setBoysName((prev) => [...prev, ...data]);
-      setBoysName(data);
+      let datad = response.data.data;
+      setBoysName((prev) => [...prev, ...datad]);
+      // setBoysName(datad);
 
-      console.log(data);
+      console.log(datad);
       setLoader(false);
     } catch (error) {
       console.log(error);

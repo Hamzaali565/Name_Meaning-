@@ -6,9 +6,6 @@ import BoysName from "../../components/GenderWise/BoysName";
 const Boys = () => {
   return (
     <div>
-      <div>
-        <Header />
-      </div>
       <div className=" flex">
         <div className="hidden lg:flex">
           <Sidebaar />

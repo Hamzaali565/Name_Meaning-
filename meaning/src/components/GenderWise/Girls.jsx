@@ -71,9 +71,9 @@ const Girls = () => {
       let response = await axios.get(
         `${baseUrl}/api/v1/getallNames?gender=Female&page=${BoysName.length}`
       );
-      let data = response.data.data;
-      setBoysName((prev) => [...prev, ...data]);
-      console.log(data);
+      let datad = response.data.data;
+      setBoysName((prev) => [...prev, ...datad]);
+      console.log(datad);
       setLoader(false);
     } catch (error) {
       console.log(error);

@@ -22,7 +22,6 @@ const PageI = () => {
     //   </div>
     // </div>
     <div>
-      <Header />
       <div className="flex">
         <div className="hidden lg:flex">
           <Sidebaar />
