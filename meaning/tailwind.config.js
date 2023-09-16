@@ -8,6 +8,12 @@ module.exports = {
       width: {
         120: "30rem", // Example for a width larger than w-96
       },
+      backgroundImage: {
+        // Linear Gradient from top to bottom (example)
+        "gradient-linear": "linear-gradient(to bottom,#ffb6c1 , #fuchsia)",
+        // Radial Gradient (example)
+        "gradient-radial": "radial-gradient(to side, #ffb6c1  ,#191919)",
+      },
     },
   },
   plugins: [],

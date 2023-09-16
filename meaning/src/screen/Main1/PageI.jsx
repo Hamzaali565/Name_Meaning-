@@ -21,7 +21,7 @@ const PageI = () => {
     //     </div>
     //   </div>
     // </div>
-    <div>
+    <div className="">
       <div className="flex">
         <div className="hidden lg:flex">
           <Sidebaar />

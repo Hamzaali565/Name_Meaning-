@@ -11,7 +11,7 @@ const SidebarData = ({ text, src, onClick }) => {
           <img src={src} alt="" className="h-12 " />
         </div>
         <div className="transitions">
-          <div className="text-2xl ">{text}</div>
+          <div className="text-2xl text-pink-500">{text}</div>
         </div>
       </div>
     </div>

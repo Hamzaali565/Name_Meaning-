@@ -60,7 +60,10 @@ const BoysName = () => {
     } catch (error) {
       console.log(error);
       setLoader(false);
-      setErrorMessage(error.response.data.message);
+      if (error.message === "Network Error") {
+        setErrorMessage("No Internet Connection");
+        return;
+      } else setErrorMessage(error.response.data.message);
     }
   };
 
@@ -78,9 +81,12 @@ const BoysName = () => {
       console.log(datad);
       setLoader(false);
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
       setLoader(false);
-      setErrorMessage(error.response.data.message);
+      if (error.message === "Network Error") {
+        setErrorMessage("No Internet Connection");
+        return;
+      } else setErrorMessage(error.response.data.message);
     }
   };
 

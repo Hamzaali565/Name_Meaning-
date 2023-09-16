@@ -60,7 +60,10 @@ const Girls = () => {
     } catch (error) {
       console.log(error);
       setLoader(false);
-      setErrorMessage(error.response.data.message);
+      if (error.message === "Network Error") {
+        setErrorMessage("No Internet Connection");
+        return;
+      } else setErrorMessage(error.response.data.message);
     }
   };
 
@@ -78,7 +81,10 @@ const Girls = () => {
     } catch (error) {
       console.log(error);
       setLoader(false);
-      setErrorMessage(error.response.data.message);
+      if (error.message === "Network Error") {
+        setErrorMessage("No Internet Connection");
+        return;
+      } else setErrorMessage(error.response.data.message);
     }
   };
 

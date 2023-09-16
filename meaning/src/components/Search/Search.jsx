@@ -13,7 +13,7 @@ const Search = ({ onSubmit, onChange, onClick }) => {
           id=""
           onChange={onChange}
           placeholder="Enter Your Name Here.."
-          className="border-pink-300 focus:outline-pink-500 border-2 rounded-xl py-1 px-2 w-64  sm:w-96"
+          className="border-pink-300 transition duration-500  focus:outline-pink-500 border-2 rounded-xl py-1 px-2 w-64  sm:w-96 shadow-2xl focus:shadow-pink-500 hover:shadow-pink-500 "
         />
       </div>
       <button onClick={onClick} className="Lookup font-bold">
